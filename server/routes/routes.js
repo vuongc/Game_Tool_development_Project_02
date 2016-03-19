@@ -7,8 +7,14 @@ router.get('/choices', function (req, res) {
 });
 
 router.post('/play', function (req, res) {
-  game.getResult(req.body.choice, req.body.version, function (result, version) {
+  game.getResult(req.body.choice, req.body.version, function (result) {
     res.json({ answer: result });
+  });
+});
+
+router.post('/updatedb', function (req, res) {
+  game.updateDb(req.body.secret, function (result) {
+    res.json({ dbUpdated: result });
   });
 });
 
