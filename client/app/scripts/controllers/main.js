@@ -26,17 +26,19 @@ angular.module('app').controller('MainController', ['$scope', '$http', '$log', f
   $scope.sendAnswer = function (answer) {
     $http({
       method: 'POST',
-      url: 'http://localhost:8080/answer',
+      url: 'http://localhost:8080/play',
       data: { version: $scope.database.version, choice: answer }
     }).then(function successCallback (response) {
-      if (!response.answer) {
+      if (!response.data.answer) {
         $scope.notification = {type: 'error', message: 'Too bad it wasn\'t the good answer !'};
         $scope.error = true;
       } else {
         $scope.notification = {type: 'success', message: 'Too bad it wasn\'t the good answer !'};
         $scope.error = false;
       }
-      $scope.database = response.data.update;
+      if (response.data.update) {
+        $scope.database = response.data.update;
+      }
     }, function errorCallback (response) {
       $log.info('Error: ', response);
       $scope.notification = {type: 'error', message: 'You didn\'t send your answer !'};
