@@ -11,8 +11,13 @@
 <body ng-app="app" ng-controller="MainController as main">
   <div class="container center-text">
     <h1>{{title}} version: {{database.version}}</h1>
-    <div ng-if="error" class="alert alert-danger">
-      <strong>Error </strong>: {{notification.message}}
+    <div ng-if="notif" ng-switch="notification.type">
+      <div ng-switch-when="error" class="alert alert-danger">
+        <strong>Error </strong>: {{notification.message}}
+      </div>
+      <div ng-switch-default class="alert alert-success">
+        <strong>Success </strong>: {{notification.message}}
+      </div>
     </div>
     <div class="btn-group-vertical" ng-repeat="choice in database.choices">
       <button class="btn btn-default" type="submit" ng-click="sendAnswer(choice)">{{choice}}</button>

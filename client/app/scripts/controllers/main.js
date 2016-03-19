@@ -3,7 +3,7 @@ angular.module('app').controller('MainController', ['$scope', '$http', '$log', f
   $scope.title = 'Choose your answer';
   $scope.database = {};
   $scope.notification = {};
-  $scope.error = false;
+  $scope.notif = false;
 
   $log.info($scope.notification);
 
@@ -14,12 +14,12 @@ angular.module('app').controller('MainController', ['$scope', '$http', '$log', f
       url: 'http://localhost:8080/choices'
     }).then(function successCallback (response) {
       $scope.database = response.data;
-      $scope.notification = {type: 'success', message: 'You got the object !'};
-      $scope.error = false;
+      $scope.notification = {type: 'success', message: 'You can play !'};
+      $scope.notif = true;
     }, function errorCallback (response) {
       $log.info('Error: ', response);
       $scope.notification = {type: 'error', message: 'You didn\'t get the object !'};
-      $scope.error = true;
+      $scope.notif = true;
     });
   };
 
@@ -31,14 +31,13 @@ angular.module('app').controller('MainController', ['$scope', '$http', '$log', f
     }).then(function successCallback (response) {
       if (!response.data.answer) {
         $scope.notification = {type: 'error', message: 'Too bad it wasn\'t the good answer !'};
-        $scope.error = true;
       } else {
-        $scope.notification = {type: 'success', message: 'Too bad it wasn\'t the good answer !'};
-        $scope.error = false;
+        $scope.notification = {type: 'success', message: 'You win !'};
       }
       if (response.data.update) {
         $scope.database = response.data.update;
       }
+      $scope.notif = true;
     }, function errorCallback (response) {
       $log.info('Error: ', response);
       $scope.notification = {type: 'error', message: 'You didn\'t send your answer !'};
