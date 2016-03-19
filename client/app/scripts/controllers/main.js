@@ -36,7 +36,7 @@ angular.module('app').controller('MainController', ['$scope', '$http', '$log', f
         $scope.notification = {type: 'success', message: 'Too bad it wasn\'t the good answer !'};
         $scope.error = false;
       }
-      $scope.database = response.data;
+      $scope.database = response.data.update;
     }, function errorCallback (response) {
       $log.info('Error: ', response);
       $scope.notification = {type: 'error', message: 'You didn\'t send your answer !'};
