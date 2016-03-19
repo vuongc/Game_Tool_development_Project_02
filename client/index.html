@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Client</title>
+
+  <!-- Add style here -->
+  <link rel="stylesheet" type="text/css" href="./app/styles/main.css" media="screen" />
+
+  <!-- Add scripts here -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+  <script src="./app/app.js"></script>
+  <script src="./app/scripts/controllers/main.js"></script>
+
+</head>
+<body ng-app="app" ng-controller="MainController as main">
+  <div class="container center-text">
+    <h1>{{main.title}}</h1>
+    <div class="row" ng-repeat="choice in choices">
+      <button class="col-md-1 btn btn-default" type="submit">{{choice}}</button>
+    </div>
+  </div>
+</body>
+</html>
