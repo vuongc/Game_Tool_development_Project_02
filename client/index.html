@@ -7,6 +7,18 @@
   <!-- Add style here -->
   <link rel="stylesheet" type="text/css" href="./app/styles/main.css" media="screen" />
 
+</head>
+<body ng-app="app" ng-controller="MainController as main">
+  <div class="container center-text">
+    <h1>{{title}}</h1>
+    <div ng-if="error" class="alert alert-danger">
+      <strong>Error </strong>: {{notification.message}}
+    </div>
+    <div class="btn-group-vertical" ng-repeat="choice in database.choices">
+      <button class="btn btn-default" type="submit" ng-click="sendAnswer(choice)">{{choice}}</button>
+    </div>
+  </div>
+
   <!-- Add scripts here -->
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet"
@@ -15,15 +27,7 @@
         crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
   <script src="./app/app.js"></script>
-  <script src="./app/scripts/controllers/main.js"></script>
 
-</head>
-<body ng-app="app" ng-controller="MainController as main">
-  <div class="container center-text">
-    <h1>{{title}}</h1>
-    <div class="row" ng-repeat="choice in choices">
-      <button class="col-md-1 btn btn-default" type="submit">{{choice}}</button>
-    </div>
-  </div>
+  <script src="./app/scripts/controllers/main.js"></script>
 </body>
 </html>
