@@ -10,7 +10,7 @@
 </head>
 <body ng-app="app" ng-controller="MainController as main">
   <div class="container center-text">
-    <h1>{{title}}</h1>
+    <h1>{{title}} version: {{database.version}}</h1>
     <div ng-if="error" class="alert alert-danger">
       <strong>Error </strong>: {{notification.message}}
     </div>
